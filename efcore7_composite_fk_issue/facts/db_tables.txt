@@ -1,0 +1,26 @@
+﻿-- ----------------------------
+-- base_table
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."base_table";
+CREATE TABLE "public"."base_table" (
+  "base_id" int8 NOT NULL,
+  "base_type_id" int4 NOT NULL
+);
+
+ALTER TABLE "public"."base_table" ADD CONSTRAINT "ak_base" UNIQUE ("base_id", "base_type_id");
+
+ALTER TABLE "public"."base_table" ADD CONSTRAINT "base_table_pkey" PRIMARY KEY ("base_id");
+
+
+-- ----------------------------
+-- sub_table
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."sub_table";
+CREATE TABLE "public"."sub_table" (
+  "sub_id" int8 NOT NULL,
+  "base_type_id" int4 NOT NULL
+);
+
+ALTER TABLE "public"."sub_table" ADD CONSTRAINT "sub_table_pkey" PRIMARY KEY ("sub_id");
+
+ALTER TABLE "public"."sub_table" ADD CONSTRAINT "fk_sub_base_one_to_one" FOREIGN KEY ("sub_id", "base_type_id") REFERENCES "public"."base_table" ("base_id", "base_type_id") ON DELETE CASCADE ON UPDATE CASCADE;

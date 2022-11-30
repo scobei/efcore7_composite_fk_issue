@@ -1,0 +1,36 @@
+﻿EF Core: 7.0.0, Npgsql: 7.0.0
+
+warn: 11/29/2022 08:53:14.632 CoreEventId.SensitiveDataLoggingEnabledWarning[10400] (Microsoft.EntityFrameworkCore.Infrastructure)
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+fail: 11/29/2022 08:53:15.024 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command)
+      Failed executing DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT s.sub_id, s."BaseTableBaseId", s."BaseTableBaseTypeId", s.base_type_id
+      FROM sub_table AS s
+      WHERE s.sub_id = 1
+      LIMIT 2
+fail: 11/29/2022 08:53:15.046 CoreEventId.QueryIterationFailed[10100] (Microsoft.EntityFrameworkCore.Query)
+      An exception occurred while iterating over the results of a query for context type 'test.Data.TestDbContext'.
+      Npgsql.PostgresException (0x80004005): 42703: column s.BaseTableBaseId does not exist
+
+      POSITION: 18
+         at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|222_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlDataReader.NextResult()
+         at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+         at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+        Exception data:
+          Severity: ERROR
+          SqlState: 42703
+          MessageText: column s.BaseTableBaseId does not exist
+          Position: 18
+          File: d:\pginstaller_13.auto\postgres.windows-x64\src\backend\parser\parse_relation.c
+          Line: 3514
+          Routine: errorMissingColumn

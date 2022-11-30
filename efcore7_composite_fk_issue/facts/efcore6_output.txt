@@ -1,0 +1,13 @@
+﻿EF Core: 6.0.11, Npgsql: 6.0.7
+
+warn: 11/29/2022 08:51:06.260 CoreEventId.SensitiveDataLoggingEnabledWarning[10400] (Microsoft.EntityFrameworkCore.Infrastructure)
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+info: 11/29/2022 08:51:06.363 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure)
+      Entity Framework Core 6.0.11 initialized 'TestDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.7+5b98e4b74de93b590b44aef8dd7967c03acc433c' with options: SensitiveDataLoggingEnabled
+info: 11/29/2022 08:51:06.685 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command)
+      Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT s.sub_id, s.base_type_id
+      FROM sub_table AS s
+      WHERE s.sub_id = 1
+      LIMIT 2
+SubId: 1, BaseTypeId: 1

@@ -1,0 +1,1 @@
+﻿dotnet ef dbcontext scaffold "..." Npgsql.EntityFrameworkCore.PostgreSQL --no-onconfiguring --force --project efcore7_composite_fk_issue --context TestDbContext --context-dir autogen/Data --context-namespace test.Data --output-dir autogen/Data/Models --namespace test.Data.Models --data-annotations

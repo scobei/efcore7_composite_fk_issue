@@ -1,0 +1,3 @@
+﻿EF Core 7.0 generates query with non-existent columns for composite foreign key
+Issue #29697
+
